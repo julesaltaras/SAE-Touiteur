@@ -7,9 +7,7 @@
 <body>
 <header><h1>Touiteur</h1></header>
 <main>
-    <p class="notice">Aperçu sans base de données : ces exemples ne sont pas modifiables.</p>
-    <p>Renseignez <code>classes/config/touiteur.ini</code> et démarrez MySQL.
-        Si vos tables sont vides, importez <code>base.sql</code> dans phpMyAdmin.</p>
+    
     <p><a href="index.php">Réessayer la connexion</a></p>
     <h2>Les derniers touites</h2>
     <article class="card"><strong>Marin Clément</strong><p>Le projet PHP c chiant #informatique</p><p>Score : 2</p></article>
