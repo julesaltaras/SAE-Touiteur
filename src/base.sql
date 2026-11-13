@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS VOTE (
 SET NAMES utf8mb4;
 START TRANSACTION;
 INSERT INTO UTILISATEUR(id_utilisateur,nom,prenom,email) VALUES
- (1,'Martin','Alice','alice@example.test'),(2,'Bernard','Lucas','lucas@example.test'),
- (3,'Petit','Emma','emma@example.test'),(4,'Robert','Noah','noah@example.test');
+ (1,'Altaras','Jules','jules@example.test'),(2,'Marin','Clement','Clement@example.test'),
+ (3,'SZLEST','Lilian','Lilian@example.test');
 INSERT INTO TAG(id_tag,libelle,description) VALUES
  (1,'informatique','Du code et des idées'),(2,'nancy','La vie à Nancy'),(3,'photo','Le regard des photographes'),(4,'jeux','Jeux et découvertes');
 INSERT INTO TOUITE(id_touite,contenu,date_publication,id_utilisateur) VALUES (1,'Bienvenue sur Touiteur ! Un projet #informatique à construire ensemble.',CURRENT_TIMESTAMP - INTERVAL 16 HOUR,1);
