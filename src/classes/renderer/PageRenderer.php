@@ -37,7 +37,7 @@ class PageRenderer
                 </nav>
                 <form method="post" action="?action=choose">
                     <?= Action::champCsrf() ?>
-                    <label>Utilisateur : <select id="user" name="user_id">
+                    <label>Utilisateur : <select id="user" name="user_id" onchange="this.form.submit()">
                             <?php foreach ($utilisateurs as $u): ?>
                                 <option value="<?= $u->id ?>" <?php if ($u->id === (int) $_SESSION['user_id']) {
                                       echo 'selected';
