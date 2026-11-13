@@ -1,11 +1,13 @@
 <?php
 namespace iutnc\touiteur\config;
 
-class Connexion {
+class Connexion
+{
     private static ?\PDO $pdo = null;
     public static bool $votes = false;
 
-    public static function obtenir(): ?\PDO {
+    public static function obtenir(): ?\PDO
+    {
         if (self::$pdo !== null) {
             return self::$pdo;
         }
@@ -25,16 +27,16 @@ class Connexion {
             }
             $requete = $pdo->query('SELECT * FROM UTILISATEUR LIMIT 1');
             if ($requete->fetch() === false) {
-                return null;
+                die('La table UTILISATEUR est vide.');
             }
-            $requete     = $pdo->query("SHOW TABLES LIKE 'VOTE'");
+            $requete = $pdo->query("SHOW TABLES LIKE 'VOTE'");
             self::$votes = $requete->fetch() !== false;
             $pdo->query('SELECT * FROM TOUITE LIMIT 1');
             $pdo->exec("SET time_zone = '" . date('P') . "'");
             self::$pdo = $pdo;
             return $pdo;
         } catch (\PDOException $e) {
-            return null;
+            die('Erreur BDD : ' . htmlspecialchars($e->getMessage()));
         }
     }
 }
