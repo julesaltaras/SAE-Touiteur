@@ -115,9 +115,15 @@ class TouiteRepository extends Repository
         $requete = $this->pdo->prepare('SELECT valeur FROM VOTE WHERE id_touite = ?');
         $requete->execute([$touite]);
         $score = 0;
+
         foreach ($requete->fetchAll() as $vote) {
             $score = $score + $vote['valeur'];
         }
+
+        if ($score < 0) {
+            $score = 0;
+        }
+
         return $score;
     }
 
