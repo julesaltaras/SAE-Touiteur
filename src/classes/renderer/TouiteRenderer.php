@@ -29,7 +29,7 @@ class TouiteRenderer
                 <a class="author" href="?action=author&id=<?= $t->auteur->id ?>">
                     <?= htmlspecialchars($t->auteur->nomComplet()) ?>
                 </a>
-                <time><?= htmlspecialchars($t->date) ?></time>
+                <time><?= date('d/m/Y à H:i', strtotime($t->date)) ?></time>
             </header>
             <p class="content"><?= htmlspecialchars($texte) ?></p>
             <div class="tags">
@@ -37,12 +37,13 @@ class TouiteRenderer
                     <a class="chip" href="?action=tag&id=<?= $tag->id ?>">#<?= htmlspecialchars($tag->libelle) ?></a>
                 <?php endforeach; ?>
             </div>
-                        <?php if ($t->image !== null): ?>
+            <?php if ($t->image !== null): ?>
                 <img class="touite-image" src="image.php?id=<?= (int) $t->image['id_image'] ?>"
                     alt="<?= htmlspecialchars($t->image['description']) ?>">
 
+
                 <p><?= htmlspecialchars($t->image['description']) ?></p>
-                        <?php endif; ?>
+            <?php endif; ?>
             <footer>
                 <span>Like : <strong><?= $t->score ?></strong>
                 </span>
