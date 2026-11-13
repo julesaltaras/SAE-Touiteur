@@ -46,7 +46,6 @@ class PageRenderer
                                 </option>
                             <?php endforeach; ?>
                         </select></label>
-                    <button>Changer</button>
                 </form>
             </header>
             <main>
