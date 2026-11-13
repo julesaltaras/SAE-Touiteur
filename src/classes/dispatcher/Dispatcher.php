@@ -38,19 +38,45 @@ class Dispatcher
                 $nom = 'all';
             }
             switch ($nom) {
-                case 'all': $action = new ListerTouitesAction(); break;
-                case 'author': $action = new AfficherAuteurAction(); break;
-                case 'tag': $action = new AfficherTagAction(); break;
-                case 'wall': $action = new AfficherMurAction(); break;
-                case 'detail': $action = new AfficherTouiteAction(); break;
-                case 'profile': $action = new AfficherProfilAction(); break;
-                case 'users': $action = new ListerUtilisateursAction(); break;
-                case 'influencers': $action = new AfficherInfluenceursAction(); break;
-                case 'publish': $action = new PublierAction(); break;
-                case 'choose': $action = new ChoisirUtilisateurAction(); break;
-                case 'follow': $action = new SuivreUtilisateurAction(); break;
-                case 'subscribe': $action = new AbonnerTagAction(); break;
-                case 'vote': $action = new VoterAction(); break;
+                case 'all':
+                    $action = new ListerTouitesAction();
+                    break;
+                case 'author':
+                    $action = new AfficherAuteurAction();
+                    break;
+                case 'tag':
+                    $action = new AfficherTagAction();
+                    break;
+                case 'wall':
+                    $action = new AfficherMurAction();
+                    break;
+                case 'detail':
+                    $action = new AfficherTouiteAction();
+                    break;
+                case 'profile':
+                    $action = new AfficherProfilAction();
+                    break;
+                case 'users':
+                    $action = new ListerUtilisateursAction();
+                    break;
+                case 'influencers':
+                    $action = new AfficherInfluenceursAction();
+                    break;
+                case 'publish':
+                    $action = new PublierAction();
+                    break;
+                case 'choose':
+                    $action = new ChoisirUtilisateurAction();
+                    break;
+                case 'follow':
+                    $action = new SuivreUtilisateurAction();
+                    break;
+                case 'subscribe':
+                    $action = new AbonnerTagAction();
+                    break;
+                case 'vote':
+                    $action = new VoterAction();
+                    break;
                 default:
                     throw new \DomainException('Cette page n’existe pas bro.');
             }
@@ -63,7 +89,10 @@ class Dispatcher
         } catch (\Throwable $e) {
             error_log((string) $e);
             http_response_code(500);
-            $contenu = '<h1>Erreur</h1><p>Cette opération n’a pas pu être enregistrée. Vérifiez les tables dans phpMyAdmin.</p>';
+
+            $contenu = '<h1>Erreur</h1><p>'
+                . htmlspecialchars($e->getMessage())
+                . '</p>';
         }
         $page = new PageRenderer($contenu);
         echo $page->render();
