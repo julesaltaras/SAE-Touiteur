@@ -125,3 +125,15 @@ CREATE TABLE COMMENTAIRE (
         FOREIGN KEY (id_touite)
         REFERENCES TOUITE(id_touite)
 ) ENGINE=InnoDB;
+
+
+--9. TABLE VOTE
+CREATE TABLE IF NOT EXISTS VOTE (
+    id_utilisateur INT NOT NULL,
+    id_touite INT NOT NULL,
+    valeur SMALLINT NOT NULL,
+    PRIMARY KEY (id_utilisateur, id_touite),
+    FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur),
+    FOREIGN KEY (id_touite) REFERENCES TOUITE(id_touite),
+    CHECK (valeur IN (-1, 1))
+) ENGINE=InnoDB;
