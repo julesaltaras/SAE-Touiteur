@@ -37,10 +37,12 @@ class TouiteRenderer
                     <a class="chip" href="?action=tag&id=<?= $tag->id ?>">#<?= htmlspecialchars($tag->libelle) ?></a>
                 <?php endforeach; ?>
             </div>
-            <?php if ($this->detail && $t->image !== null): ?>
+                        <?php if ($t->image !== null): ?>
                 <img class="touite-image" src="image.php?id=<?= (int) $t->image['id_image'] ?>"
                     alt="<?= htmlspecialchars($t->image['description']) ?>">
-            <?php endif; ?>
+
+                <p><?= htmlspecialchars($t->image['description']) ?></p>
+                        <?php endif; ?>
             <footer>
                 <span>Like : <strong><?= $t->score ?></strong>
                 </span>

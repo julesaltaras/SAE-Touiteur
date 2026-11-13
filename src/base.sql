@@ -1,15 +1,3 @@
-
-CREATE TABLE IF NOT EXISTS VOTE (
-    id_utilisateur INT NOT NULL,
-    id_touite INT NOT NULL,
-    valeur SMALLINT NOT NULL,
-    PRIMARY KEY (id_utilisateur, id_touite),
-    FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur),
-    FOREIGN KEY (id_touite) REFERENCES TOUITE(id_touite),
-    CHECK (valeur IN (-1, 1))
-) ENGINE=InnoDB;
-
-
 SET NAMES utf8mb4;
 START TRANSACTION;
 INSERT INTO UTILISATEUR(id_utilisateur,nom,prenom,email) VALUES
